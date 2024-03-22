@@ -14,7 +14,7 @@ fun main() {
  * 简单的 runBlocking 示例
  * runBlocking 是一个顶层函数，用于启动一个新的协程并阻塞当前线程，直到协程执行完毕。
  */
-fun demo1() {
+private fun demo1() {
     println("============= demo1 ==============")
     val result = runBlocking {
         // 打印上下文
@@ -32,7 +32,7 @@ fun demo1() {
  * 通过指定不同的上下文，可以让 runBlocking 在不同的线程池里执行。
  * 但是，runBlocking 本身是阻塞的，因此它会阻塞当前线程，直到协程执行完毕。
  */
-fun demo2() {
+private fun demo2() {
     println("============= demo2 ==============")
     // 指定 runBlocking 运行在 IO 线程池里
     val result = runBlocking(Dispatchers.IO) {
@@ -48,7 +48,7 @@ fun demo2() {
 /**
  * 在 runBlocking 里启动一个新的协程
  */
-fun demo3() {
+private fun demo3() {
     println("============= demo3 ==============")
     // 指定 runBlocking 运行在 IO 线程池里
     val result = runBlocking(Dispatchers.IO) {
@@ -75,7 +75,7 @@ fun demo3() {
 /**
  * 取消一个协程，以及检查协程的状态
  */
-fun demo4() {
+private fun demo4() {
     println("============= demo4 ==============")
     val result = runBlocking(Dispatchers.IO) {
 
@@ -98,7 +98,7 @@ fun demo4() {
 /**
  * 切换线程
  */
-fun demo5() {
+private fun demo5() {
     println("============= demo5 ==============")
     val result = runBlocking(Dispatchers.IO) {
         println("runBlocking: I'm working in context $coroutineContext")  // BlockingCoroutine{Active} Dispatchers.IO
@@ -123,7 +123,7 @@ fun demo5() {
  * 在一般的使用场景中，回调也会是在其他线程中执行的，因此回调需声明为 suspend
  * @param finish 网络请求完成后的回调
  */
-suspend fun request(finish: suspend () -> Unit) {
+private suspend fun request(finish: suspend () -> Unit) {
     delay(3000)
     println("网络请求完成！")
     finish()
